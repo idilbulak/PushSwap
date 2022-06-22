@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   array_utils.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/06/22 17:03:18 by ibulak        #+#    #+#                 */
+/*   Updated: 2022/06/22 17:03:29 by ibulak        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 void	printlist(t_stack *stack)
@@ -43,4 +55,3 @@ int	stack_size(t_stack *stack)
 		size += 1000;
 	return (size);
 }
-

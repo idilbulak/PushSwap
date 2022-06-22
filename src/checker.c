@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   checker.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/06/22 20:07:34 by ibulak        #+#    #+#                 */
+/*   Updated: 2022/06/22 20:07:35 by ibulak        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "../inc/push_swap.h"
 #include "get_next_line.h"
@@ -21,7 +33,6 @@ int	which_move(char *mv)
 {
 	int			i;
 	const char	*moves[11];
-	
 
 	init_moves(moves);
 	i = 0;
@@ -59,12 +70,12 @@ int	checker(t_stacks *stacks)
 	mv = get_next_line(0);
 	while (mv)
 	{
-		// next_fn = which_move(mv);
-		// free(mv);
-		// if (next_fn == -1)
-		// 	return (-1);
-		// repeat_fn[next_fn](next_fn, stacks, 0);
-		// mv = get_next_line(0);
+		next_fn = which_move(mv);
+		free(mv);
+		if (next_fn == -1)
+			return (-1);
+		repeat_fn[next_fn](next_fn, stacks, 0);
+		mv = get_next_line(0);
 	}
 	return (1);
 }

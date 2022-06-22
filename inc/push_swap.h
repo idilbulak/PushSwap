@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   push_swap.h                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/06/22 18:07:09 by ibulak        #+#    #+#                 */
+/*   Updated: 2022/06/22 18:07:10 by ibulak        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdio.h>
@@ -36,7 +48,7 @@ typedef struct s_rotation
 typedef int	(*t_repeat_fn)(t_stacks *stacks, int value);
 
 // main
-void		init_stacks(t_stack *stack);
+void		init_stacks(t_stack *stack_a, t_stack *stack_b);
 int			if_number(char **argv);
 int			if_notdoubles(t_stack *stack, int nbr);
 int			if_sorted(t_stack *stack);
@@ -58,10 +70,12 @@ int			getmin(int x, int y);
 int			getmax(int x, int y);
 int			stack_prev(struct s_stack *stack);
 
-
 //sort
-void		sort(t_stacks *stacks);
+int			compare_ab(t_stacks *stacks);
+int			compare_bc(t_stacks *stacks);
+int			compare_ac(t_stacks *stacks);
 void		sort_3(t_stacks *stacks);
+void		sort(t_stacks *stacks);
 void		sort_4(t_stacks *stacks);
 void		sort_5(t_stacks *stacks);
 

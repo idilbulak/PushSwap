@@ -15,11 +15,19 @@ ARFLAGS			=	rcs
 SRCS_F			=	push_swap.c get_args.c array_utils.c array_utils2.c \
 					sort.c sort_large.c sort_utils.c swap_functions.c   \
 					rotate_functions.c reverse_rotate_functions.c \
-					push_functions.c
+					push_functions.c sort_3.c sort_4.c sort_5.c
+
+BONUS_F			=	checker.c get_next_line.c get_next_line_utils.c
 
 SRCS			= 	$(addprefix $(SRCS_DIR), $(SRCS_F))
 
-OBJS			=	$(SRCS:.c=.o)
+BONUS			=	$(addprefix $(SRCS_DIR), $(BONUS_F))
+
+ifdef WITH_BONUS
+OBJS = $(SRCS:.c=.o) $(BONUS:.c=.o)
+else
+OBJS = $(SRCS:.c=.o)
+endif
 
 CC				=	gcc
 CC_FLAGS		= 	-Wall -Wextra -Werror 

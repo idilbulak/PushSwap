@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   get_args.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/06/22 12:15:27 by ibulak        #+#    #+#                 */
+/*   Updated: 2022/06/22 13:39:58 by ibulak        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 int	ft_isdigit(int c)
@@ -14,6 +26,20 @@ void	push_stack(t_stack *stack, int value)
 	stack->next = next_index(stack->next);
 }
 
+int	if_negative(int sign, int j)
+{
+	sign = -1;
+	j++;
+	return (j);
+}
+
+int	check_sign(int nbr, int sign)
+{
+	if (sign == -1)
+			nbr = nbr * -1;
+	return (nbr);
+}
+
 int	get_args(int argc, char **argv, t_stacks *stacks)
 {
 	int	i;
@@ -21,8 +47,8 @@ int	get_args(int argc, char **argv, t_stacks *stacks)
 	int	nbr;
 	int	sign;
 
-	i = 1;
-	while(i < argc)
+	i = 0;
+	while (++i < argc)
 	{
 		sign = 1;
 		nbr = 0;
@@ -37,10 +63,8 @@ int	get_args(int argc, char **argv, t_stacks *stacks)
 			nbr = nbr * 10 + (argv[i][j] - '0');
 			j++;
 		}
-		if (sign ==  -1)
-			nbr = nbr * -1;
+		nbr = check_sign(nbr, sign);
 		push_stack(stacks->stack_b, nbr);
-		i++;
 	}
-	return(1);
+	return (1);
 }

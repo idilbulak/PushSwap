@@ -1,31 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   push_swap.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/06/22 12:00:07 by ibulak        #+#    #+#                 */
+/*   Updated: 2022/06/22 19:56:23 by ibulak        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
-void	init_stacks(t_stack *stack)
+void	init_stacks(t_stack *stack_a, t_stack *stack_b)
 {
-	stack->head = 0;
-	stack->next = 0;
+	stack_a->head = 0;
+	stack_a->next = 0;
+	stack_b->head = 0;
+	stack_b->next = 0;
 }
 
 int	if_number(char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
-	while(argv[i])
+	while (argv[i])
 	{
 		j = 0;
-		while(argv[i][j])
+		while (argv[i][j])
 		{
-			if(argv[i][j] == '-')
+			if (argv[i][j] == '-')
 				j++;
-			if(!ft_isdigit(argv[i][j]))
-				return(-1);
+			if (!ft_isdigit(argv[i][j]))
+				return (-1);
 			j++;
 		}
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	if_notdoubles(t_stack *stack, int nbr)
@@ -70,16 +84,15 @@ int	main(int argc, char **argv)
 	{
 		if (if_number(argv) == -1)
 			exit(EXIT_FAILURE);
-		init_stacks(&stack_a);
-		init_stacks(&stack_b);
+		init_stacks(&stack_a, &stack_b);
 		stacks.stack_a = &stack_a;
 		stacks.stack_b = &stack_b;
 		if (get_args(argc, argv, &stacks) == -1)
 			exit(EXIT_FAILURE);
-		while(!stack_empty(stacks.stack_b))
+		while (!stack_empty(stacks.stack_b))
 		{
 			i = stack_prev(stacks.stack_b);
-			if(if_notdoubles(stacks.stack_b, i) == -1)
+			if (if_notdoubles(stacks.stack_b, i) == -1)
 				exit(EXIT_FAILURE);
 			push_stack(stacks.stack_a, i);
 		}
