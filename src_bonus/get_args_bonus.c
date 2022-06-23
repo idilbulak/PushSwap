@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/checker.h"
 
 int	ft_isdigit(int c)
 {
@@ -25,6 +25,13 @@ void	push_stack(t_stack *stack, int value)
 	stack->numberfield[stack->next] = value;
 	stack->next = next_index(stack->next);
 }
+
+// int	if_negative(int sign, int j)
+// {
+// 	sign = -1;
+// 	j++;
+// 	return (j);
+// }
 
 int	check_sign(int nbr, int sign)
 {

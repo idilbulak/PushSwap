@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   push_swap.h                                        :+:    :+:            */
+/*   get_next_line.h                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/06/22 18:07:09 by ibulak        #+#    #+#                 */
-/*   Updated: 2022/06/22 18:07:10 by ibulak        ########   odam.nl         */
+/*   Created: 2021/12/01 22:30:18 by ibulak        #+#    #+#                 */
+/*   Updated: 2021/12/07 13:41:33 by ibulak        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -36,24 +36,33 @@ typedef struct s_stacks
 	int			stack_bmin;
 }	t_stacks;
 
-typedef struct s_rotation
-{
-	int	cost_ra;
-	int	cost_rb;
-	int	cost_rra;
-	int	cost_rrb;
-	int	method;	
-}	t_rotation;
-
 typedef int	(*t_repeat)(t_stacks *stacks, int value);
 
-//getargs
-void		push_stack(t_stack *stack, int value);
-int			get_args(int argc, char **argv, t_stacks *stacks);
-int			ft_isdigit(int c);
-int			check_sign(int nbr, int sign);
+// getnextline
+char		*get_line(char *str);
+char		*update_str(char *str);
+char		*ft_read(char *str, int fd, int result);
+char		*get_next_line(int fd);
+char		*ft_strjoin(char *s1, char *s2);
+size_t		ft_strlen(const char *s);
+char		*ft_strchr(char *s, int c);
+void		*ft_calloc(size_t count, size_t size);
+void		*ft_memset(void *b, int c, size_t len);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
-//arrayutils
+// checker
+void		init_moves(const char **moves);
+int			which_move(char *mv);
+void		init_functions(t_repeat functions[11]);
+int			checker(t_stacks *stacks);
+
+// getargs
+int			ft_isdigit(int c);
+void		push_stack(t_stack *stack, int value);
+int			check_sign(int nbr, int sign);
+int			get_args(int argc, char **argv, t_stacks *stacks);
+
+// arrayutils
 void		init_stacks(t_stack *stack_a, t_stack *stack_b);
 int			if_number(char **argv);
 int			if_notdoubles(t_stack *stack, int nbr);
@@ -69,33 +78,6 @@ int			getmin(int x, int y);
 int			getmax(int x, int y);
 int			stack_prev(struct s_stack *stack);
 void		repeat(t_repeat fn, t_stacks *stacks, int n);
-int			update_best(t_rotation *rot, int method, int best_cost);
-int			rotation_cost(t_stacks *stacks, t_rotation *rot, int i, int j);
-int			rotation_stack_b(t_stacks *stacks, t_rotation *rot, int i);
-t_rotation	rotation_stack_a_b(t_stacks *stacks);
-
-//sort
-int			compare_ab(t_stacks *stacks);
-int			compare_bc(t_stacks *stacks);
-int			compare_ac(t_stacks *stacks);
-void		sort_3(t_stacks *stacks);
-void		sort(t_stacks *stacks);
-void		sort_4(t_stacks *stacks);
-void		sort_5(t_stacks *stacks);
-
-//sortlarge
-int			if_swap(t_stack *stack);
-int			if_insertion(t_stacks *stacks, int i, int j);
-void		insertion(t_stacks *stacks, t_rotation rot);
-void		bring_min_to_top(t_stacks *stacks);
-
-//swap
-int			swap(t_stack *stack);
-int			sa(t_stack *stack);
-int			sb(t_stack *stack);
-int			check_sa(t_stack *stack);
-int			check_sb(t_stack *stack);
-int			ss(t_stacks *stacks);
 
 // rotate
 void		rotate(t_stack *stack);
@@ -112,5 +94,12 @@ int			rrr(t_stacks *stacks, int n);
 // push
 int			pa(t_stacks *stacks, int n);
 int			pb(t_stacks *stacks, int n);
+
+// swap
+int	swap(t_stack *stack);
+int	sa(t_stacks *stacks, int n);
+int	sb(t_stacks *stacks, int n);
+int	ss(t_stacks *stacks, int n);
+
 
 #endif

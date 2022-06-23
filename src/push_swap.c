@@ -12,65 +12,41 @@
 
 #include "../inc/push_swap.h"
 
-void	init_stacks(t_stack *stack_a, t_stack *stack_b)
+void	sort_large(t_stacks *stacks)
 {
-	stack_a->head = 0;
-	stack_a->next = 0;
-	stack_b->head = 0;
-	stack_b->next = 0;
+	t_rotation	rot;
+
+	if (stacks->stack_a->numberfield[1] > stacks->stack_a->numberfield[0])
+		sa(stacks->stack_a);
+	pb(stacks, 1);
+	pb(stacks, 1);
+	while (stack_size(stacks->stack_a) != 0)
+	{
+		stacks->stack_bmax = find_max(stacks->stack_b);
+		stacks->stack_bmin = find_min(stacks->stack_b);
+		rot = rotation_stack_a_b(stacks);
+		insertion(stacks, rot);
+		pb(stacks, 1);
+	}
+	bring_min_to_top(stacks);
+	repeat(pa, stacks, stack_size(stacks->stack_b));
 }
 
-int	if_number(char **argv)
+void	sort(t_stacks *stacks)
 {
-	int	i;
-	int	j;
-
-	i = 1;
-	while (argv[i])
+	if (stack_size(stacks->stack_a) == 2)
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (argv[i][j] == '-')
-				j++;
-			if (!ft_isdigit(argv[i][j]))
-				return (-1);
-			j++;
-		}
-		i++;
+		if (stacks->stack_a->numberfield[1] > stacks->stack_a->numberfield[0])
+			sa(stacks->stack_a);
 	}
-	return (1);
-}
-
-int	if_notdoubles(t_stack *stack, int nbr)
-{
-	int	i;
-
-	i = stack->head;
-	while (i != stack->next)
-	{
-		if (stack->numberfield[i] == nbr)
-			return (-1);
-		i = next_index(i);
-	}
-	return (1);
-}
-
-int	if_sorted(t_stack *stack)
-{
-	int	i;
-	int	prev;
-
-	prev = MAX_INT;
-	i = stack->head;
-	while (i != stack->next)
-	{
-		if (prev < stack->numberfield[i])
-			return (-1);
-		prev = stack->numberfield[i];
-		i = next_index(i);
-	}
-	return (1);
+	else if (stack_size(stacks->stack_a) == 3)
+		sort_3(stacks);
+	else if (stack_size(stacks->stack_a) == 4)
+		sort_4(stacks);
+	else if (stack_size(stacks->stack_a) == 5)
+		sort_5(stacks);
+	else if (stack_size(stacks->stack_a) > 5)
+		sort_large(stacks);
 }
 
 int	main(int argc, char **argv)

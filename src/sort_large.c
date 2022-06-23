@@ -35,25 +35,25 @@ void	insertion(t_stacks *stacks, t_rotation rot)
 {
 	if (rot.method == 2)
 	{
-		repeat_fn(rr, stacks, getmin(rot.cost_ra, rot.cost_rb));
-		repeat_fn(ra, stacks, getmax(0, rot.cost_ra - rot.cost_rb));
-		repeat_fn(rb, stacks, getmax(0, rot.cost_rb - rot.cost_ra));
+		repeat(rr, stacks, getmin(rot.cost_ra, rot.cost_rb));
+		repeat(ra, stacks, getmax(0, rot.cost_ra - rot.cost_rb));
+		repeat(rb, stacks, getmax(0, rot.cost_rb - rot.cost_ra));
 	}
 	else if (rot.method == 3)
 	{
-		repeat_fn(rrr, stacks, getmin(rot.cost_rra, rot.cost_rrb));
-		repeat_fn(rra, stacks, getmax(0, rot.cost_rra - rot.cost_rrb));
-		repeat_fn(rrb, stacks, getmax(0, rot.cost_rrb - rot.cost_rra));
+		repeat(rrr, stacks, getmin(rot.cost_rra, rot.cost_rrb));
+		repeat(rra, stacks, getmax(0, rot.cost_rra - rot.cost_rrb));
+		repeat(rrb, stacks, getmax(0, rot.cost_rrb - rot.cost_rra));
 	}
 	else if (rot.method == 4)
 	{
-		repeat_fn(ra, stacks, rot.cost_ra);
-		repeat_fn(rrb, stacks, rot.cost_rrb);
+		repeat(ra, stacks, rot.cost_ra);
+		repeat(rrb, stacks, rot.cost_rrb);
 	}
 	else if (rot.method == 5)
 	{
-		repeat_fn(rra, stacks, rot.cost_rra);
-		repeat_fn(rb, stacks, rot.cost_rb);
+		repeat(rra, stacks, rot.cost_rra);
+		repeat(rb, stacks, rot.cost_rb);
 	}
 }
 
@@ -72,9 +72,9 @@ void	bring_min_to_top(t_stacks *stacks)
 		if (stacks->stack_b->numberfield[i] == min)
 		{
 			if (rot.cost_rb < rot.cost_rrb)
-				repeat_fn(rb, stacks, rot.cost_rb);
+				repeat(rb, stacks, rot.cost_rb);
 			else
-				repeat_fn(rrb, stacks, rot.cost_rrb);
+				repeat(rrb, stacks, rot.cost_rrb);
 			break ;
 		}
 		rot.cost_rb--;
