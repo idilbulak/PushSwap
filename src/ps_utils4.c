@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   ps_utils4.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/06/27 10:53:18 by ibulak        #+#    #+#                 */
+/*   Updated: 2022/06/27 11:33:27 by ibulak        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
 
 void	init_stacks(t_stack *stack_a, t_stack *stack_b)
@@ -19,10 +31,13 @@ int	if_number(char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (argv[i][j] == '-')
+			if (argv[i][j] == '-' || argv[i][j] == '+')
 				j++;
 			if (!ft_isdigit(argv[i][j]))
+			{
+				write(1, "Error\n", 6);
 				return (-1);
+			}
 			j++;
 		}
 		i++;

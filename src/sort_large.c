@@ -6,7 +6,7 @@
 /*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/22 18:14:39 by ibulak        #+#    #+#                 */
-/*   Updated: 2022/06/22 20:01:46 by ibulak        ########   odam.nl         */
+/*   Updated: 2022/06/27 11:05:41 by ibulak        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,13 @@ int	if_insertion(t_stacks *s, int i, int j)
 void	insertion(t_stacks *stacks, t_rotation rot)
 {
 	if (rot.method == 2)
-	{
-		repeat(rr, stacks, getmin(rot.cost_ra, rot.cost_rb));
-		repeat(ra, stacks, getmax(0, rot.cost_ra - rot.cost_rb));
-		repeat(rb, stacks, getmax(0, rot.cost_rb - rot.cost_ra));
-	}
+		rot_2(stacks, rot);
 	else if (rot.method == 3)
-	{
-		repeat(rrr, stacks, getmin(rot.cost_rra, rot.cost_rrb));
-		repeat(rra, stacks, getmax(0, rot.cost_rra - rot.cost_rrb));
-		repeat(rrb, stacks, getmax(0, rot.cost_rrb - rot.cost_rra));
-	}
+		rot_3(stacks, rot);
 	else if (rot.method == 4)
-	{
-		repeat(ra, stacks, rot.cost_ra);
-		repeat(rrb, stacks, rot.cost_rrb);
-	}
+		rot_4(stacks, rot);
 	else if (rot.method == 5)
-	{
-		repeat(rra, stacks, rot.cost_rra);
-		repeat(rb, stacks, rot.cost_rb);
-	}
+		rot_5(stacks, rot);
 }
 
 void	bring_min_to_top(t_stacks *stacks)

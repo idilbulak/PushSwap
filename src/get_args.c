@@ -6,7 +6,7 @@
 /*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/22 12:15:27 by ibulak        #+#    #+#                 */
-/*   Updated: 2022/06/22 13:39:58 by ibulak        ########   odam.nl         */
+/*   Updated: 2022/06/27 11:03:56 by ibulak        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ int	get_args(int argc, char **argv, t_stacks *stacks)
 		nbr = 0;
 		j = 0;
 		if (argv[i][j] == '-')
-		{
 			sign = -1;
+		if (argv[i][j] == '-' || argv[i][j] == '+')
 			j++;
-		}
 		while (ft_isdigit(argv[i][j]))
 		{
 			nbr = nbr * 10 + (argv[i][j] - '0');

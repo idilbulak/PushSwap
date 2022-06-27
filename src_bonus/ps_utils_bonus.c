@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   array_utils.c                                      :+:    :+:            */
+/*   ps_utils_bonus.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/22 17:03:18 by ibulak        #+#    #+#                 */
-/*   Updated: 2022/06/22 17:03:29 by ibulak        ########   odam.nl         */
+/*   Updated: 2022/06/27 11:19:51 by ibulak        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,17 @@ int	stack_size(t_stack *stack)
 	if (size < 0)
 		size += 1000;
 	return (size);
+}
+
+void	checker_init(t_stacks *stacks)
+{
+	int	i;
+
+	while (!stack_empty(stacks->stack_b))
+	{
+		i = stack_prev(stacks->stack_b);
+		if (if_notdoubles(stacks->stack_b, i) == -1)
+			exit(EXIT_FAILURE);
+		push_stack(stacks->stack_a, i);
+	}
 }

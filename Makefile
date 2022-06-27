@@ -20,13 +20,13 @@ SRCS_F			=	push_swap.c get_args.c ps_utils.c ps_utils2.c \
 					sort_large.c ps_utils3.c swap_functions.c \
 					rotate_functions.c reverse_rotate_functions.c \
 					push_functions.c sort_3.c sort_4.c sort_5.c \
-					ps_utils4.c
+					ps_utils4.c ps_utils5.c
 
-SRCS_BONUS_F	=	checker.c get_next_line.c get_next_line_utils.c \
+SRCS_BONUS_F	=	checker.c get_next_line_bonus.c get_next_line_utils_bonus.c \
 					ps_utils_bonus.c ps_utils2_bonus.c ps_utils3_bonus.c \
 					swap_functions_bonus.c rotate_functions_bonus.c \
 					reverse_rotate_functions_bonus.c \
-					push_functions_bonus.c get_args_bonus.c ps_utils4_bonus.c
+					push_functions_bonus.c get_args_bonus.c
 
 SRCS			= 	$(addprefix $(SRCS_DIR), $(SRCS_F))
 

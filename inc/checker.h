@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_next_line.h                                    :+:    :+:            */
+/*   checker.h                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/01 22:30:18 by ibulak        #+#    #+#                 */
-/*   Updated: 2021/12/07 13:41:33 by ibulak        ########   odam.nl         */
+/*   Updated: 2022/06/27 11:20:20 by ibulak        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int			getmin(int x, int y);
 int			getmax(int x, int y);
 int			stack_prev(struct s_stack *stack);
 void		repeat(t_repeat fn, t_stacks *stacks, int n);
+void		checker_init(t_stacks *stacks);
 
 // rotate
 void		rotate(t_stack *stack);
@@ -96,10 +97,9 @@ int			pa(t_stacks *stacks, int n);
 int			pb(t_stacks *stacks, int n);
 
 // swap
-int	swap(t_stack *stack);
-int	sa(t_stacks *stacks, int n);
-int	sb(t_stacks *stacks, int n);
-int	ss(t_stacks *stacks, int n);
-
+int			swap(t_stack *stack);
+int			sa(t_stacks *stacks, int n);
+int			sb(t_stacks *stacks, int n);
+int			ss(t_stacks *stacks, int n);
 
 #endif

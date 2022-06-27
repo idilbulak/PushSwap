@@ -6,7 +6,7 @@
 /*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/22 18:07:09 by ibulak        #+#    #+#                 */
-/*   Updated: 2022/06/22 18:07:10 by ibulak        ########   odam.nl         */
+/*   Updated: 2022/06/27 10:40:11 by ibulak        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ int			update_best(t_rotation *rot, int method, int best_cost);
 int			rotation_cost(t_stacks *stacks, t_rotation *rot, int i, int j);
 int			rotation_stack_b(t_stacks *stacks, t_rotation *rot, int i);
 t_rotation	rotation_stack_a_b(t_stacks *stacks);
+void		rot_2(t_stacks *stacks, t_rotation rot);
+void		rot_3(t_stacks *stacks, t_rotation rot);
+void		rot_4(t_stacks *stacks, t_rotation rot);
+void		rot_5(t_stacks *stacks, t_rotation rot);
 
 //sort
 int			compare_ab(t_stacks *stacks);

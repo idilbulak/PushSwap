@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   get_args.c                                         :+:    :+:            */
+/*   get_args_bonus.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/22 12:15:27 by ibulak        #+#    #+#                 */
-/*   Updated: 2022/06/22 13:39:58 by ibulak        ########   odam.nl         */
+/*   Updated: 2022/06/27 11:21:28 by ibulak        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ void	push_stack(t_stack *stack, int value)
 	stack->numberfield[stack->next] = value;
 	stack->next = next_index(stack->next);
 }
-
-// int	if_negative(int sign, int j)
-// {
-// 	sign = -1;
-// 	j++;
-// 	return (j);
-// }
 
 int	check_sign(int nbr, int sign)
 {

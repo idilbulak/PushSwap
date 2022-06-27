@@ -6,7 +6,7 @@
 /*   By: ibulak <ibulak@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/22 20:07:34 by ibulak        #+#    #+#                 */
-/*   Updated: 2022/06/22 20:07:35 by ibulak        ########   odam.nl         */
+/*   Updated: 2022/06/27 11:19:30 by ibulak        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	which_move(char *mv)
 {
 	int			i;
 	const char	*moves[11];
-	
+
 	init_moves(moves);
 	i = 0;
 	while (i < 11)
@@ -45,7 +45,6 @@ int	which_move(char *mv)
 
 void	init_functions(t_repeat *functions)
 {
-	
 	functions[0] = sa;
 	functions[1] = sb;
 	functions[2] = ss;
@@ -64,7 +63,7 @@ int	checker(t_stacks *stacks)
 	char			*mv;
 	int				next_fn;
 	t_repeat		functions[11];
-	
+
 	init_functions(functions);
 	mv = get_next_line(0);
 	while (mv)
@@ -84,30 +83,26 @@ int	main(int argc, char **argv)
 	t_stacks	stacks;
 	t_stack		stack_a;
 	t_stack		stack_b;
-	int			i;
 
 	init_stacks(&stack_a, &stack_b);
 	stacks.stack_a = &stack_a;
 	stacks.stack_b = &stack_b;
 	if (argc < 2)
 		return (0);
-	if (get_args(argc, argv, &stacks) == -1)
-		exit(EXIT_FAILURE);
-	while (!stack_empty(stacks.stack_b))
+	if (if_number(argv) == -1 || get_args(argc, argv, &stacks) == -1)
 	{
-		i = stack_prev(stacks.stack_b);
-		if (if_notdoubles(stacks.stack_b, i) == -1)
-			exit(EXIT_FAILURE);
-		push_stack(stacks.stack_a, i);
+		write(1, "Error\n", 6);
+		exit(EXIT_FAILURE);
 	}
+	checker_init(&stacks);
 	if (checker(&stacks) == -1)
 	{
-		write(1, "Error", 5);
+		write(1, "Error\n", 6);
 		exit(EXIT_FAILURE);
 	}
 	if (if_sorted(stacks.stack_a) == -1)
-		write(1, "KO", 2);
+		write(1, "KO\n", 3);
 	else
-		write(1, "OK", 2);
+		write(1, "OK\n", 3);
 	return (0);
 }
